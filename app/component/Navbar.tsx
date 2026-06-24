@@ -22,10 +22,10 @@ export default function Navbar() {
 
         <ul className={menuOpen ? "nav-links active" : "nav-links"}>
           <li>
-            <Link href="/">หน้าหลัก</Link>
+            <Link href="/">Menu</Link>
           </li>
           <li>
-            <Link href="/about">เกี่ยวกับเรา</Link>
+            <Link href="/about">About us</Link>
           </li>
           <li>
             <Link href="/dashboard">Dashboard</Link>
