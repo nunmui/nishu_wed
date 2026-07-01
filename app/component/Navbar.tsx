@@ -86,7 +86,9 @@ export default function Navbar() {
           ) : (
             <>
               <li className="user-info">
-                {user.name} ({user.role})
+                <Link href="/profile">
+                  {user.name} ({user.role})
+                </Link>
               </li>
               <li>
                 <button onClick={logout} className="btn-logout">
