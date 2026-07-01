@@ -3,6 +3,7 @@ import { getSession } from "@/lib/session";
 
 export default async function DashboardPage() {
   const user = await getSession();
+  console.log("=== ตรวจสอบเซสชันบน Dashboard ===", user);
 
   if (!user) {
     redirect("/login");

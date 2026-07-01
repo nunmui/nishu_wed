@@ -20,8 +20,7 @@ export default function LoginPage() {
         });
 
         if (res.ok) {
-            router.push("/dashboard");
-            router.refresh();
+            window.location.href = "/dashboard";
         } else {
             alert("Login failed");
         }
