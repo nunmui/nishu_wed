@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 type User = {
   name: string;
@@ -15,18 +15,42 @@ type User = {
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false); 
 
-   const router = useRouter();
+  const router = useRouter();
+  const pathname = usePathname();
   const [user, setUser] = useState<User | null>(null);
   // const [open, setOpen] = useState(false);
 
   useEffect(() => {
+    let ignore = false;
+
+
     async function loadUser() {
       const res = await fetch("/api/auth/me");
       const data = await res.json();
-      setUser(data.user);
+      
+      if(!ignore){
+        setUser(data.user);
+      }
     }
 
     loadUser();
+
+    return () => {
+      ignore = true;
+    };
+  }, [pathname]);
+
+  useEffect(() => {
+      function handleAuthChange(event: Event) {
+        const authEvent = event as CustomEvent<{ user: User | null }>;
+        setUser(authEvent.detail?.user ?? null);
+    }
+
+    window.addEventListener("auth-change", handleAuthChange);
+
+    return () => {
+      window.removeEventListener("auth-change", handleAuthChange);
+    };
   }, []);
 
   async function logout() {
@@ -35,6 +59,9 @@ export default function Navbar() {
     });
 
     setUser(null);
+    window.dispatchEvent(
+      new CustomEvent("auth-change", { detail: { user: null } })
+    );
     router.push("/login");
     router.refresh();
   }
@@ -47,8 +74,7 @@ export default function Navbar() {
         </Link>
 
         <button
-          className="menu-btn"
-          onClick={() => setMenuOpen(!menuOpen)}
+          className="menu-btn" onClick={() => setMenuOpen(!menuOpen)}
         >
           ☰
         </button>
@@ -97,6 +123,9 @@ export default function Navbar() {
                 <Link href="/profile">
                   {user.name} ({user.role})
                 </Link>
+              </li>
+              <li>
+                <Link href="/profile">Profile</Link>
               </li>
               <li>
                 <button onClick={logout} className="btn-logout">
