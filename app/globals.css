@@ -118,6 +118,13 @@ body{
   align-items: center;
 }
 
+.category-page{
+  min-height: calc(100vh - 140px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .auth-card {
   width: 360px;
   background: white;
@@ -133,7 +140,22 @@ body{
   font-weight: bold;
 }
 
+.category h1 {
+  margin-top: 0;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
 .auth-card input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+}
+
+.category input {
   width: 100%;
   padding: 12px;
   margin-bottom: 14px;

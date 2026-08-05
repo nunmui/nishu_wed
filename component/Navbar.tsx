@@ -101,7 +101,7 @@ export default function Navbar() {
                 <Link href="/admin/categories">Categories</Link>
               </li>
               <li>
-                <Link href="/admin/producrs">Product</Link>
+                <Link href="/admin/products">Product</Link>
               </li>
             </>
           )}
