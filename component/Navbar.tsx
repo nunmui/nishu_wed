@@ -98,6 +98,9 @@ export default function Navbar() {
                 <Link href="/admin/users">Admin</Link>
               </li>
               <li>
+                <Link href="/admin/blogs">Blogs</Link>
+              </li>
+              <li>
                 <Link href="/admin/categories">Categories</Link>
               </li>
               <li>
