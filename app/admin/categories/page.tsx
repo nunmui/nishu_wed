@@ -1,4 +1,4 @@
-import CategoryForm from "@/component/CategoryFrom";
+import CategoryForm from "@/component/CategoryForm";
 
 export default function AdminCategoriesPage() {
   return (

@@ -86,6 +86,14 @@ export default function Navbar() {
           <li>
             <Link href="/about">About us</Link>
           </li>
+          <li>
+            <Link href="/products">Product</Link>
+          </li>
+          <li>
+            <Link href="/blogs">บทความ</Link>
+          </li>
+
+
            {user && (
             <li>
               <Link href="/dashboard">Dashboard</Link>
@@ -98,7 +106,7 @@ export default function Navbar() {
                 <Link href="/admin/users">Admin</Link>
               </li>
               <li>
-                <Link href="/admin/blogs">Blogs</Link>
+                <Link href="/admin/blogs">Blog</Link>
               </li>
               <li>
                 <Link href="/admin/categories">Categories</Link>
