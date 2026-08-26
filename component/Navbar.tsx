@@ -90,7 +90,7 @@ export default function Navbar() {
             <Link href="/products">Product</Link>
           </li>
           <li>
-            <Link href="/blogs">บทความ</Link>
+            <Link href="/blogs">Articles</Link>
           </li>
 
 
