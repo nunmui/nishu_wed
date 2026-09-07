@@ -87,10 +87,10 @@ export default function Navbar() {
             <Link href="/about">About us</Link>
           </li>
           <li>
-            <Link href="/products">Product</Link>
+            <Link href="/products">ProductCard</Link>
           </li>
           <li>
-            <Link href="/blogs">Articles</Link>
+            <Link href="/blogs">BlogCard</Link>
           </li>
 
 

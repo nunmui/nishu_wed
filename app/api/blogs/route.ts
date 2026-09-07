@@ -1,6 +1,14 @@
 import { NextResponse } from "next/server";
+//import mongoose from "mongoose";
 import { connectDB } from "@/lib/mongodb";
 import Blog from "@/models/Blog";
+
+type RouteContext = {
+  params: Promise<{
+    id: string;
+  }>;
+}; 
+
 
 export async function GET() {
   try {
@@ -47,7 +55,7 @@ export async function POST(request: Request) {
       $or: [{ title }, { slug }],
     });
 
-    if (existingBlog                        ) {
+    if (existingBlog) {
       return NextResponse.json(
         { message: "ชื่อหรือ slug นี้มีอยู่แล้ว" },
         { status: 409 }
@@ -76,3 +84,4 @@ export async function POST(request: Request) {
     );
   }
 }
+

@@ -14,7 +14,7 @@ export default async function ProductsPage() {
     .sort({ createdAt: -1 })
     .lean();
 
-  const serializedProducts = products.map((product: any) => ({
+  const serializedProducts = products.map((product) => ({
     _id: product._id.toString(),
     name: product.name,
     description: product.description,
@@ -24,9 +24,12 @@ export default async function ProductsPage() {
     category:
       product.category &&
       typeof product.category === "object" &&
-      "_id" in product.category
+      "name" in product.category
         ? {
-            _id: product.category._id.toString(),
+            _id:
+              "_id" in product.category && product.category._id
+                ? product.category._id.toString()
+                : "",
             name: String(product.category.name),
           }
         : undefined,
